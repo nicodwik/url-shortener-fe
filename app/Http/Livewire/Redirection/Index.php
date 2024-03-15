@@ -6,7 +6,7 @@ use App\Helpers\HttpClientHelper;
 use App\Http\Livewire\BaseComponent;
 use Livewire\Component;
 
-class Index extends Component
+class Index extends BaseComponent
 {
     public function render()
     {
@@ -16,11 +16,11 @@ class Index extends Component
             ->run('/api/v1/user/redirections');
 
         $data = [
-            'data' => $resp->data
+            'data' => $resp->data,
+            'modules' => $this->modules,
         ];
 
-        // dd($data);
-
-        return view('livewire.redirection.index', $data);
+        return view('livewire.redirection.index')
+            ->with($data);
     }
 }

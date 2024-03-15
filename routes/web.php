@@ -47,7 +47,7 @@ Route::prefix('admin')->middleware('auth.api')->as('admin.')->group(function () 
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
 
     Route::prefix('redirection')->as('redirection.')->group(function() {
-        Route::get('/', Index::class)->name('index');
+        Route::get('/', Index::class)->name('manage');
     });
 });
 

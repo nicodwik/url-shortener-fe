@@ -2,12 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Helpers\GeneralHelper;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class BaseComponent extends Component
 {
-    protected $modules = [
-        'name' => __NAMESPACE__,
-        'section' => __CLASS__,
-    ];
+    protected $modules = [];
+
+    public function __construct()
+    {
+        $this->modules = GeneralHelper::generateModules();
+    }
+
 }

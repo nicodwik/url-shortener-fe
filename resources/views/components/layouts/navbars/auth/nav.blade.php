@@ -5,15 +5,15 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     @php
-                        $modules = Str::of(Route::currentRouteName())->explode('.')->take(-2)->values()->transform(fn ($item) => Str::ucfirst($item));
+                        $modules = App\Helpers\GeneralHelper::generateModules();
                     @endphp
-                    <li class="breadcrumb-item text-md"><a class="opacity-5 text-dark" href="javascript:;">{{ $modules[0] }}</a>
+                    <li class="breadcrumb-item text-md"><a class="opacity-5 text-dark" href="javascript:;">{{ $modules?->name }}</a>
                     </li>
                     <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">
-                        {{ $modules[1] }}</li>
+                        {{ $modules?->section }}</li>
                 </ol>
                 <h6 class="font-weight-bolder mb-0 text-capitalize">
-                    {{ $modules[1] }}</h6>
+                    {{ $modules?->section }}</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex justify-content-end" id="navbar">
                 <div class="ms-md-3 pe-md-3 d-flex align-items-center">

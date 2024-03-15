@@ -45,8 +45,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Redirection</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'admin.redirection.index' ? 'active' : '' }}"
-                    href="{{ route('admin.redirection.index') }}"
+                <a class="nav-link {{ Route::currentRouteName() == 'admin.redirection.manage' ? 'active' : '' }}"
+                    href="{{ route('admin.redirection.manage') }}"
                     wire:navigate>
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
