@@ -49,16 +49,15 @@ class HttpClientHelper
     {
         $baseUrl = $this->baseUrl;
 
-        $http = new Http;
+        $http = Http::asJson();
 
         if (! empty($this->headers)) {
-            $http = $http::withHeaders($this->headers);
+            $http = $http->withHeaders($this->headers);
         }
 
         switch ($this->action) {
             case 'post':
-                $resp = $http->asForm()
-                    ->post($baseUrl.$url, $data);
+                $resp = $http->post($baseUrl.$url, $data);
                 break;
 
             case 'get':

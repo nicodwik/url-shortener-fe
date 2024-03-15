@@ -17,7 +17,7 @@
                 @include('components.layouts.navbars.auth.nav-profile')
                 <div>
                     {{ $slot }}
-                    @include('components.layouts.footers.auth.footer')
+                    {{-- @include('components.layouts.footers.auth.footer') --}}
                 </div>
             </div>
             @include('components.plugins.fixed-plugin')
@@ -26,13 +26,13 @@
             @include('components.layouts.navbars.auth.nav')
             @include('components.plugins.fixed-plugin')
             {{ $slot }}
-            <main>
+            {{-- <main>
                 <div class="container-fluid">
                     <div class="row">
                         @include('components.layouts.footers.auth.footer')
                     </div>
                 </div>
-            </main>
+            </main> --}}
         @endif
     {{-- @endauth --}}
 

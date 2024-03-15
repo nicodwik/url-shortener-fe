@@ -7,11 +7,11 @@
             <a class="dropdown-item border-radius-md" href="javascript:;">
                 <div class="d-flex py-1">
                     <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                        <img src="https://ui-avatars.com/api/?name={{ $user?->name }}" class="avatar avatar-sm  me-3 ">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
-                            <span class="font-weight-bold">{{$user?->name}}</span>
+                            <span class="font-weight-bold">{{ $user?->name }}</span>
                         </h6>
                         <p class="text-xs text-secondary mb-0">
                             {{ $user->email }}

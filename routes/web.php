@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RedirectionController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Auth\ForgotPassword;
@@ -51,3 +52,4 @@ Route::prefix('admin')->middleware('auth.api')->as('admin.')->group(function () 
     });
 });
 
+Route::get('/{short_url}', RedirectionController::class)->name('redirect');
