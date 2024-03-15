@@ -8,9 +8,9 @@
             @include('components.layouts.footers.guest.with-socials')
             {{-- If the user is authenticated on the static sign in or the login page --}}
         @elseif (in_array(request()->route()->getName(),['sign-in', 'login'],))
-            @include('components.layouts.navbars.guest.login')
+            {{-- @include('components.layouts.navbars.guest.login') --}}
             {{ $slot }}
-            @include('components.layouts.footers.guest.description')
+            {{-- @include('components.layouts.footers.guest.description') --}}
         @elseif (in_array(request()->route()->getName(),['profile', 'my-profile'],))
             @include('components.layouts.navbars.auth.sidebar')
             <div class="main-content position-relative bg-gray-100">

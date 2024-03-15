@@ -5,18 +5,13 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 
-class HttpClientHelper extends Http
+class HttpClientHelper
 {
     protected string $baseUrl;
 
     protected string $action;
 
     protected array $headers;
-
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    // }
 
     public static function init()
     {
@@ -62,7 +57,8 @@ class HttpClientHelper extends Http
 
         switch ($this->action) {
             case 'post':
-                $resp = $http->post($baseUrl.$url, $data);
+                $resp = $http->asForm()
+                    ->post($baseUrl.$url, $data);
                 break;
 
             case 'get':

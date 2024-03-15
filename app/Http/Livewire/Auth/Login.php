@@ -32,7 +32,7 @@ class Login extends Component
             return $this->addError('email', trans('auth.failed')); 
         }
 
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/admin/dashboard');
     }
 
     public function render()
