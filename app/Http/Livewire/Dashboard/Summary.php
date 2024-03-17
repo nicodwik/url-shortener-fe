@@ -16,9 +16,12 @@ class Summary extends Component
             ->setAction('get')
             ->run('/api/v1/dashboard');
 
-        // dd($resp);
-
         $this->summary = $resp?->data;
+    }
+
+    public function placeholder()
+    {
+        return view('components.placeholders.spinner');
     }
 
     public function render()

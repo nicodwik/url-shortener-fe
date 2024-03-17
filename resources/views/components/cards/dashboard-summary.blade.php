@@ -7,14 +7,14 @@
           <div class="col-8">
             <div class="numbers">
                 <p class="text-sm mb-4 text-capitalize font-weight-bold">{{ $title }}</p>
-                <h4 class="font-weight-bolder mb-0">
+                <h5 class="font-weight-bolder mb-0">
                     @if (is_null($content))
                         -
                     @else
                         {{ $content }}
                     @endif
-                </h4>
-                @if (! empty($helper))
+                </h5>
+                @if (! is_null($helper))
                     <span class="text-secondary text-sm">{{ $helper }}</span>
                 @endif
             </div>
