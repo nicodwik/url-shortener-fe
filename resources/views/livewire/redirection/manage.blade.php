@@ -8,11 +8,13 @@
                         <div>
                             <h5 class="mb-0">All {{ $modules?->name }}</h5>
                         </div>
-                        <a href="#" class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New {{ $modules?->name }}</a>
+                        <a href="{{ route('admin.redirection.create') }}" wire:navigate class="btn bg-gradient-primary btn-sm mb-0" type="button">+&nbsp; New {{ $modules?->name }}</a>
                     </div>
                 </div>
                 <livewire:redirection.table lazy>
             </div>
         </div>
     </div>
+
+   
 </div>

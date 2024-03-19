@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Redirection;
 
 use App\Http\Livewire\BaseComponent;
 
-class Index extends BaseComponent
+class Manage extends BaseComponent
 {
     public function render()
     {
@@ -12,7 +12,7 @@ class Index extends BaseComponent
             'modules' => $this->modules,
         ];
 
-        return view('livewire.redirection.index')
+        return view('livewire.redirection.manage')
             ->with($data);
     }
 }

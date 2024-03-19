@@ -34,6 +34,11 @@
 
     {{ $slot }}
 
+    {{-- Toast Message --}}
+    @session('toast-success')
+        <x-toast.success :message="session('toast-success')" />
+    @endsession
+
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
     <script data-navigate-once src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -52,6 +57,14 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/soft-ui-dashboard.js') }}"></script>
+    @session('toast-success')
+        <script>
+            var myToastEl = document.getElementById('toastSuccess');
+            var myToast = new bootstrap.Toast(myToastEl); // Returns a Bootstrap toast instance
+            myToast.show();
+        </script>
+    @endsession
+
     @livewireScripts
 </body>
 

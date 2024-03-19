@@ -9,7 +9,8 @@ use App\Http\Livewire\Auth\SignUp;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Dashboard\Index as DashboardIndex;
-use App\Http\Livewire\Redirection\Index;
+use App\Http\Livewire\Redirection\Create as RedirectionCreate;
+use App\Http\Livewire\Redirection\Manage as RedirectionManage;
 use App\Http\Livewire\User\Profile;
 
 /*
@@ -40,7 +41,8 @@ Route::prefix('admin')->middleware('auth.api')->as('admin.')->group(function () 
     // Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
 
     Route::prefix('redirection')->as('redirection.')->group(function() {
-        Route::get('/', Index::class)->name('manage');
+        Route::get('/', RedirectionManage::class)->name('manage');
+        Route::get('/create', RedirectionCreate::class)->name('create');
     });
 
     Route::prefix('user')->as('user.')->group(function() {
