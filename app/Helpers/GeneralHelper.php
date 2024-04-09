@@ -12,6 +12,7 @@ class GeneralHelper
         $currentRouteName = Str::of(Route::currentRouteName())
             ->explode('.');
 
+        // Ex: admin.redirection.manage = [admin = base module], [redirection = module name], [manage = module section]
         return (object) [
             'name' => $currentRouteName
                 ->skip(1)

@@ -8,7 +8,7 @@
         <div class="card blur shadow-blur mx-4 mt-n6">
             <div class="card-body">
                 <div class="row gx-4">
-                    <form wire:submit="save" action="#" method="POST" role="form text-left">
+                    <form wire:submit="save" role="form text-left">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

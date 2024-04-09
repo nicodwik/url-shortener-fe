@@ -9,14 +9,14 @@ class Profile extends BaseComponent
 {
     public $user;
 
+    public $password;
+
     public function mount()
     {
         $resp = HttpClientHelper::init()
             ->withAuth()
             ->setAction('get')
             ->run('/api/v1/user');
-
-        // dd($resp);
 
         $this->user = $resp?->data;
     }

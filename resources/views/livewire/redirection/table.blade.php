@@ -31,7 +31,15 @@
                                 <p class="text-xs font-weight-bold mb-0">{{ ($index + 1) + (($data?->meta?->current_page - 1) * 10) }}</p>
                             </td>
                             <td class="text-center">
-                                <p class="text-xs font-weight-bold mb-0">{{ $item->short_url }}</p>
+                                {{-- <div class="d-flex align-items-center"> --}}
+                                    <a href="javascript:;">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $item->short_url }}</p>
+                                    </a>
+                                    
+                                    {{-- <button class="btn btn-light btn-sm px-2 py-1 mb-0 ms-2">
+                                        <i class="ni ni-ungroup"></i>
+                                    </button>
+                                </div> --}}
                             </td>
                             <td class="text-center">
                                 <p class="text-xs font-weight-bold mb-0">{{ $item->long_url }}</p>

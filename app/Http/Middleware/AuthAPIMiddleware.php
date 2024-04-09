@@ -20,7 +20,7 @@ class AuthAPIMiddleware
         $user = AuthAPIHelper::user();
 
         if (empty($user)) {
-            return redirect()->route('login');
+            return redirect()->route('guest.login');
         }
 
         return $next($request);

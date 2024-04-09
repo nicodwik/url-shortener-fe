@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark me-2" href="{{ auth()->user() ? route('sign-in') : route('login') }}">
+                    <a class="nav-link text-dark me-2" href="{{ auth()->user() ? route('sign-in') : route('guest.login') }}">
                         <i class="fas fa-key opacity-6 text-dark me-1"></i>
                         Sign In
                     </a>

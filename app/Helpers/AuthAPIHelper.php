@@ -2,28 +2,25 @@
 
 namespace App\Helpers;
 
-use DateTimeImmutable;
 use Exception;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
-use Lcobucci\Clock\FrozenClock;
-use Lcobucci\JWT\Encoding\JoseEncoder;
-use Lcobucci\JWT\JwtFacade;
-use Lcobucci\JWT\Signer\Hmac\Sha256;
-use Lcobucci\JWT\Signer\Key\InMemory;
-use Lcobucci\JWT\Token\Parser;
-use Lcobucci\JWT\UnencryptedToken;
-use Lcobucci\JWT\Validation\Constraint\SignedWith;
-use Lcobucci\JWT\Validation\Constraint\StrictValidAt;
-use Psr\Clock\ClockInterface;
+use stdClass;
 
 class AuthAPIHelper 
 {
     protected $user;
 
-    public static function login(array $credentials): ?string
+    public static function login(array $credentials): ?stdClass
     {
+        if ( 
+            empty($credentials['email']) || 
+            empty($credentials['password'])
+            ) {
+                
+            return null;
+        }
+        
         $resp = Http::asForm()
             ->post( config('general.api.base_url') .'/api/v1/login', [
                 'email' => $credentials['email'],
@@ -39,7 +36,35 @@ class AuthAPIHelper
 
         Cookie::queue(Cookie::make('access_token', $accessToken));
 
-        return $accessToken;
+        return $data;
+    }
+
+    public static function register(array $credentials): ?stdClass
+    {
+        if ( 
+            empty($credentials['email']) || 
+            empty($credentials['name']) || 
+            empty($credentials['password'])
+            ) {
+
+            return null;
+        }
+
+        $data = [
+            'email' => $credentials['email'],
+            'name' => $credentials['name'],
+            'password' => $credentials['password'],
+        ];
+
+        $resp = HttpClientHelper::init()
+            ->setAction('post')
+            ->run('/api/v1/register', $data);
+        
+        if (! $resp->status == 'success') {
+            return null;
+        }
+
+        return $resp;
     }
 
     public static function logout()
@@ -75,5 +100,12 @@ class AuthAPIHelper
             return null;
         }
        
+    }
+
+    public static function isLoggedIn(): bool
+    {
+        $accessToken = Cookie::get('access_token');
+
+        return ! empty($accessToken);
     }
 }

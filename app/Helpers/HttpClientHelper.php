@@ -21,13 +21,17 @@ class HttpClientHelper
         return $http;
     }
 
-    public function withAuth()
+    public function withAuth(string $token = null)
     {
-        $accessToken = Cookie::get('access_token');
+        $accessToken = $token ?? Cookie::get('access_token');
+
+        // dd($accessToken);
 
         if (empty($accessToken)) {
-            return redirect()->route('login');
+            return redirect()->route('guest.login');
         }
+
+        // dd($accessToken);
 
         $headers = [
             'Authorization' => 'bearer '. $accessToken
@@ -49,7 +53,7 @@ class HttpClientHelper
     {
         $baseUrl = $this->baseUrl;
 
-        $http = Http::asJson();
+        $http = Http::asForm();
 
         if (! empty($this->headers)) {
             $http = $http->withHeaders($this->headers);
@@ -65,8 +69,10 @@ class HttpClientHelper
                 break;
         }
 
+        // dump($resp->object());
+
         if ($resp->unauthorized()) {
-            return redirect()->route('login');
+            return redirect()->route('guest.login');
         }
 
         return $resp->object();

@@ -71,7 +71,7 @@
                             <div class="form-group">
                                 <label for="user.password" class="form-control-label">{{ __('Password') }}</label>
                                 <div class="@error('user.password')border border-danger rounded-3 @enderror">
-                                    <input wire:model="user.password" class="form-control" type="password"
+                                    <input wire:model="password" class="form-control" type="password"
                                        id="password">
                                 </div>
                                 @error('user.password') <div class="text-danger">{{ $message }}</div> @enderror

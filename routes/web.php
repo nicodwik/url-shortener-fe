@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\SignUp;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Dashboard\Index as DashboardIndex;
+use App\Http\Livewire\Guest\Home;
 use App\Http\Livewire\Redirection\Create as RedirectionCreate;
 use App\Http\Livewire\Redirection\Manage as RedirectionManage;
 use App\Http\Livewire\User\Profile;
@@ -24,16 +25,24 @@ use App\Http\Livewire\User\Profile;
 |
 */
 
-Route::get('/', function() {
-    return redirect('/login');
+// Route::get('/', function() {
+//     return redirect('/login');
+// });
+
+Route::get('/', Home::class)->name('home');
+
+Route::prefix('guest')->as('guest.')->group(function () {
+    Route::get('/sign-up', SignUp::class)->name('sign-up');
+    Route::get('/login', Login::class)->name('login');
+
+    Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
+
+    Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+
+    Route::prefix('redirection')->as('redirection.')->group(function () {
+        Route::post('create', ForgotPassword::class)->name('create');
+    });
 });
-
-Route::get('/sign-up', SignUp::class)->name('sign-up');
-Route::get('/login', Login::class)->name('login');
-
-Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
-
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
 Route::prefix('admin')->middleware('auth.api')->as('admin.')->group(function () {
     Route::get('/dashboard', DashboardIndex::class)->name('dashboard');

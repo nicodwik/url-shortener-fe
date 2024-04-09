@@ -7,7 +7,7 @@ use App\Http\Livewire\BaseComponent;
 
 class Create extends BaseComponent
 {
-    public $long_url;
+    public string $long_url;
 
     public function render()
     {

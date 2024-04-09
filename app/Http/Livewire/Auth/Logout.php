@@ -19,12 +19,13 @@ class Logout extends Component
             ->run('/api/v1/user');
 
         $this->user = $resp?->data;
+        // $this->user = null;
     }
 
     public function logout() 
     {
         AuthAPIHelper::logout();
-        return redirect('/login');
+        return redirect()->route('guest.login');
     }
 
     public function render()
