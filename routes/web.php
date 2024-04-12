@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\ResetPassword;
-use App\Http\Livewire\Auth\SignUp;
+use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Dashboard\Index as DashboardIndex;
@@ -32,7 +32,7 @@ use App\Http\Livewire\User\Profile;
 Route::get('/', Home::class)->name('home');
 
 Route::prefix('guest')->as('guest.')->group(function () {
-    Route::get('/sign-up', SignUp::class)->name('sign-up');
+    Route::get('/register', Register::class)->name('register');
     Route::get('/login', Login::class)->name('login');
 
     Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');

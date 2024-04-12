@@ -16,11 +16,11 @@
         </div>
        
     </a>
-    <ul class="dropdown-menu mt-2 dropdown-menu-end p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
+    <ul class="dropdown-menu mt-2 p-2 me-sm-n4" aria-labelledby="dropdownMenuButton">
         <li>
-            <div class="d-flex flex-column justify-content-center">
-                <a class="btn btn-outline-danger btn-sm mb-0" wire:click="logout">log out</a>
-            </div>
+            {{-- <div class="d-flex flex-column justify-content-center"> --}}
+                <a class="dropdown-item border-radius-md" wire:click="logout">log out</a>
+            {{-- </div> --}}
         </li>
     </ul>
 </div>
