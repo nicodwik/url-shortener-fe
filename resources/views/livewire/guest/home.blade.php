@@ -7,9 +7,9 @@
                     <div class="container-fluid px-0">
                         <a
                             class="navbar-brand font-weight-bolder ms-sm-3"
-                            href="https://demos.creative-tim.com/soft-ui-design-system/index.html"
+                            href="{{ route('home') }}"
                             rel="tooltip"
-                            title="Designed and Coded by Creative Tim"
+                            title="Free URL Shortener by {{ config('app.creator') }}"
                             data-placement="bottom"
                             target="_blank"
                         >
@@ -984,7 +984,7 @@
                     <div class="text-center">
                         <p class="my-4 text-sm">
                             All rights reserved. Copyright © 2024
-                            {{ config('app.name') }} by <a href="https://instagram.com/nicodwi_k">Nico Dwi K.</a>.
+                            {{ config('app.name') }} by <a href="https://instagram.com/nicodwi_k">{{ config('app.creator') }}</a>.
                         </p>
                     </div>
                 </div>

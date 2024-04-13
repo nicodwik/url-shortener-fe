@@ -15,13 +15,6 @@ class Home extends Component
         'long_url' => 'required|url',
     ];
 
-    // public function mount() {
-    //     if(auth()->user()){
-    //         redirect('/dashboard');
-    //     }
-    //     $this->fill(['email' => 'user1@nerdproject.id', 'password' => 'password']);
-    // }
-
     public function render()
     {
         return view('livewire.guest.home');

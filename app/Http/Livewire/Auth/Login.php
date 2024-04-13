@@ -20,7 +20,7 @@ class Login extends Component
         if(auth()->user()){
             redirect('/dashboard');
         }
-        $this->fill(['email' => 'user1@nerdproject.id', 'password' => 'password']);
+        // $this->fill(['email' => 'user1@nerdproject.id', 'password' => 'password']);
     }
 
     public function login() {

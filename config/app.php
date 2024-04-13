@@ -18,6 +18,8 @@ return [
     */
 
     'name' => Str::replace('_', ' ', env('APP_NAME', 'Laravel')),
+    
+    'creator' => Str::replace('_', ' ', env('APP_CREATOR', 'Laravel')),
 
     /*
     |--------------------------------------------------------------------------
