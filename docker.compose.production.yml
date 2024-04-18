@@ -1,6 +1,6 @@
 services:
     fe-service:
-        container_name: fe-service
+        container_name: url-shortener-fe-service
         build:
             context: ./
             dockerfile: Dockerfile.production
