@@ -1,5 +1,6 @@
 services:
     fe-service:
+        container_name: fe-service
         build:
             context: ./
             dockerfile: Dockerfile.production
