@@ -8,6 +8,11 @@ services:
         ports:
             - '8001:80'
             # - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+        depends_on:
+            - be-service
+        networks:
+            - url-shortener
+       
         # environment:
         #     WWWUSER: '${WWWUSER}'
         #     LARAVEL_SAIL: 1
@@ -16,3 +21,6 @@ services:
         #     IGNITION_LOCAL_SITES_PATH: '${PWD}'
         # volumes:
         #     - './url-shortener-fe:/var/www/html/url-shortener-fe'
+networks:
+    url-shortener:
+        external: true
