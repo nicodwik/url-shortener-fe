@@ -675,10 +675,10 @@
                                     </li>
                                 @else
                                     <li class="nav-item my-auto ms-3 ms-lg-auto">
-                                        <a wire:navigate href="{{ route('guest.register') }}" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Register</a>
+                                        <a href="{{ route('guest.register') }}" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Register</a>
                                     </li>
                                     <li class="nav-item my-auto ms-3 ms-lg-0">
-                                        <a wire:navigate href="{{ route('guest.login') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Login</a>
+                                        <a href="{{ route('guest.login') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Login</a>
                                     </li>
                                 @endif
                             </ul>
