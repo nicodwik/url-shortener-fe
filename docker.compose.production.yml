@@ -11,7 +11,7 @@ services:
         depends_on:
             - be-service
         networks:
-            - url-shortener
+            - url-shortener-network
        
         # environment:
         #     WWWUSER: '${WWWUSER}'
@@ -22,5 +22,5 @@ services:
         # volumes:
         #     - './url-shortener-fe:/var/www/html/url-shortener-fe'
 networks:
-    url-shortener:
+    url-shortener-network:
         external: true
