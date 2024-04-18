@@ -8,8 +8,8 @@ services:
         ports:
             - '8001:80'
             # - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        depends_on:
-            - be-service
+        # depends_on:
+        #     - be-service
         networks:
             - url-shortener-network
        
