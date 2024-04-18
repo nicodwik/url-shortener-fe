@@ -1,0 +1,50 @@
+services:
+    # fe-service:
+    #     build:
+    #         context: ./url-shortener-fe/vendor/laravel/sail/runtimes/8.3
+    #         dockerfile: Dockerfile
+    #         args:
+    #             WWWGROUP: '${WWWGROUP}'
+    #     image: sail-8.3/app
+    #     extra_hosts:
+    #         - 'host.docker.internal:host-gateway'
+    #     ports:
+    #         - '8001:8001'
+    #         # - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+    #     environment:
+    #         WWWUSER: '${WWWUSER}'
+    #         LARAVEL_SAIL: 1
+    #         XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+    #         XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+    #         IGNITION_LOCAL_SITES_PATH: '${PWD}'
+    #     volumes:
+    #         - './url-shortener-fe:/var/www/html/url-shortener-fe'
+    #     networks:
+    #         - sail
+        # depends_on:
+        #     - mysql
+    be-service:
+        build:
+            context: ./url-shortener-go
+            dockerfile: Dockerfile.local
+        ports:
+            - '8002:8002'
+        volumes:
+            - "./url-shortener-go:/url-shortener-go"
+        # environment:
+            # DB_HOST: 'host.docker.internal'
+            # DB_PASSWORD: 'qweAsd123!@#'
+            # REDIS_HOST: 'host.docker.internal'
+    nginx-proxy-manager:
+        image: 'jc21/nginx-proxy-manager:latest'
+        restart: unless-stopped
+        ports:
+        - '80:80'
+        - '81:81'
+        - '443:443'
+        volumes:
+        - ./data:/data
+        - ./letsencrypt:/etc/letsencrypt
+# volumes:
+#     sail-mysql:
+#         driver: local

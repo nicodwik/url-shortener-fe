@@ -1,0 +1,51 @@
+# https://hub.docker.com/_/php/
+# https://github.com/docker-library/php/tree/master/8.2/alpine3.18/fpm
+
+FROM php:8.2-fpm-alpine
+
+ARG TZ=Asia/Jakarta
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Find the php packages here:
+# https://pkgs.alpinelinux.org/packages?maintainer=Andy%20Postnikov&page=3&name=php7%2a&arch=x86&branch=edge
+
+RUN set -xe \
+    && apk del --no-cache libmcrypt-dev   \
+    && apk update \
+    && apk add --no-cache nginx curl libzip-dev zip libpng-dev \
+    libmcrypt-dev libltdl \
+    php82-ctype php82-curl php82-dom php82-fileinfo php82-mbstring php82-openssl \
+    php82-session php82-tokenizer php82-xml \
+    php82-bcmath php82-bz2 php82-calendar php82-exif php82-gd \
+    php82-opcache php82-sockets php82-zip \ 
+    && docker-php-ext-configure gd \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install mysqli pdo pdo_mysql zip gd \
+    && docker-php-ext-enable pdo_mysql \
+    && rm -rf /var/cache/apk/*
+
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer --version=1.6.3
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+#RUN echo extension=mcrypt.so > /etc/php7/conf.d/mcrypt.ini
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default
+RUN mkdir -p /run/nginx
+COPY .docker/php-fpm/php.in[i] /usr/local/etc/php/
+COPY .docker/php-fpm/php-fpm.con[f] /usr/local/etc/
+COPY .docker/nginx/nginx.con[f] /etc/nginx/nginx.conf
+COPY .docker/nginx/default.con[f] /etc/nginx/conf.d/
+
+COPY --chown=www-data:www-data . /var/www/html
+
+RUN composer install --optimize-autoloader --no-dev \
+    && chown www-data:www-data . -R \
+    && env > /etc/environment
+
+ENV COMPOSER_ALLOW_SUPERUSER=1 \
+    PHP_FPM_MEMORY_LIMIT=512M 
+    
+CMD ["/bin/sh", "-c", "php-fpm -D && chmod 755 /var/www/html/* && nginx -g 'daemon off;'"]
+
+# HEALTHCHECK --timeout=5s CMD curl --silent --fail http://127.0.0.1/ping
