@@ -62,11 +62,16 @@
         const collapsible = new bootstrap.Collapse('[data-bs-toggle="collapse"]')
 
         function copyToClipboard(shortUrl, el) {
-            navigator.clipboard.writeText(shortUrl);
-            el.innerHTML = '<small>Copied to clipboard!</small>'
-            setTimeout(() => {
-                el.innerHTML = '<i class="fa fa-copy"></i>'
-            }, 3000);
+            navigator.clipboard.writeText(shortUrl)
+                .then(() => {
+                    el.innerHTML = '<small>Copied to clipboard!</small>'
+                    setTimeout(() => {
+                        el.innerHTML = '<i class="fa fa-copy"></i>'
+                    }, 3000);
+                })
+                .catch(() => {
+                    alert("something went wrong");
+                });
         }
     </script>
 @endpush
