@@ -9,7 +9,7 @@
                             class="navbar-brand font-weight-bolder ms-sm-3"
                             href="{{ route('home') }}"
                             rel="tooltip"
-                            title="Free URL Shortener by {{ config('app.creator') }}"
+                            title="{{ config('app.name') }} by {{ config('app.creator') }}"
                             data-placement="bottom"
                             target="_blank"
                         >
@@ -669,16 +669,16 @@
                                     </a>
                                 </li> --}}
                                 @if (App\Helpers\AuthAPIHelper::isLoggedIn())
-                                    <li class="nav-item my-auto ms-3 ms-lg-auto">
+                                    <li class="nav-item my-auto ms-lg-auto">
                                         {{-- <livewire:auth.logout lazy /> --}}
-                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Dashboard</a>
+                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0 w-100">Dashboard</a>
                                     </li>
                                 @else
-                                    <li class="nav-item my-auto ms-3 ms-lg-auto">
-                                        <a href="{{ route('guest.register') }}" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Register</a>
+                                    <li class="nav-item my-auto ms-lg-auto">
+                                        <a href="{{ route('guest.register') }}" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0 w-100">Register</a>
                                     </li>
-                                    <li class="nav-item my-auto ms-3 ms-lg-0">
-                                        <a href="{{ route('guest.login') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Login</a>
+                                    <li class="nav-item my-auto ms-md-3 ms-sm-0">
+                                        <a href="{{ route('guest.login') }}" class="btn btn-sm bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0 w-100">Login</a>
                                     </li>
                                 @endif
                             </ul>
@@ -705,7 +705,7 @@
                                     <input wire:model='long_url' class="form-control" placeholder="Long URL" aria-label="Long URL" type="url" required>
                                   </div>
                                 </div>
-                                <div class="col-md-3 col-sm-12 text-center">
+                                <div class="col-md-3 col-sm-12 text-center mt-3 mt-md-0">
                                     <button type="submit" class="btn w-100 bg-gradient-primary mb-0">Make It Short</button>
                                   </div>
                               </div>
