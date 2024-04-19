@@ -35,10 +35,14 @@
                             </li>
                         </ul>
                         <div class="d-flex mt-3">
-                            <a target="_blank" href={{ route('redirect', ['short_url' => $item->short_url]) }} class="btn bg-gradient-primary">
+                            <button class="btn bg-gradient-light" disabled>
+                                <i class="fa fa-lg fa-pencil"></i>
+                            </button>
+
+                            <a target="_blank" href={{ route('redirect', ['short_url' => $item->short_url]) }} class="btn bg-gradient-primary ms-3">
                                 <i class="fa fa-lg fa-external-link"></i>
                             </a>
-                            <button onclick="copyToClipboard('{{ $item->short_url }}', this)" class="btn bg-gradient-light ms-3">
+                            <button onclick="copyToClipboard('{{ $item->short_url }}', this)" class="btn bg-gradient-primary ms-3">
                                 <i class="fa fa-lg fa-copy"></i>
                             </button>
                         </div>
