@@ -23,19 +23,18 @@
                         <input type="text" class="form-control" placeholder="Type here...">
                     </div>
                 </div> --}}
+                <a href="javascript:;" class="d-md-none text-body p-0" id="iconNavbarSidenav">
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                    </div>
+                </a>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item dropdown d-flex align-items-center">
                         <livewire:auth.logout lazy />
                     </li>
-                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                                <i class="sidenav-toggler-line"></i>
-                            </div>
-                        </a>
-                    </li>
+                    
                     {{-- <li class="nav-item px-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0">
                             <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
