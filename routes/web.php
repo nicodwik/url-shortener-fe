@@ -13,6 +13,7 @@ use App\Http\Livewire\Guest\Home;
 use App\Http\Livewire\Redirection\Create as RedirectionCreate;
 use App\Http\Livewire\Redirection\Manage as RedirectionManage;
 use App\Http\Livewire\User\Profile;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ use App\Http\Livewire\User\Profile;
 // Route::get('/', function() {
 //     return redirect('/login');
 // });
+
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
 
 Route::get('/', Home::class)->name('home');
 

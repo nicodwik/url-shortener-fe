@@ -28,7 +28,7 @@ services:
             context: ./url-shortener-go
             dockerfile: Dockerfile.local
         ports:
-            - '8002:8002'
+            - '${APP_PORT:-8002}:8002'
         volumes:
             - "./url-shortener-go:/url-shortener-go"
         # environment:
