@@ -6,6 +6,7 @@ use App\Helpers\AuthAPIHelper;
 use App\Helpers\HttpClientHelper;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
+use Faker\Factory;
 
 class Home extends Component
 {
@@ -26,7 +27,7 @@ class Home extends Component
         if (! AuthAPIHelper::isLoggedIn()) {
 
             // REGISTER
-            $faker = fake();
+            $faker = Factory::create();
             $dataRegister = [
                 'email' => $faker->email(),
                 'name' => $faker->name(),
