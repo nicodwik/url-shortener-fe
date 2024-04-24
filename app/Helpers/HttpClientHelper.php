@@ -25,13 +25,9 @@ class HttpClientHelper
     {
         $accessToken = $token ?? Cookie::get('access_token');
 
-        // dd($accessToken);
-
         if (empty($accessToken)) {
             return redirect()->route('guest.login');
         }
-
-        // dd($accessToken);
 
         $headers = [
             'Authorization' => 'bearer '. $accessToken
@@ -72,6 +68,7 @@ class HttpClientHelper
         // dump($resp->object());
 
         if ($resp->unauthorized()) {
+            Cookie::queue(Cookie::forget('access_token'));
             return redirect()->route('guest.login');
         }
 
