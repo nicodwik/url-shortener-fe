@@ -690,7 +690,7 @@
         </div>
     </div>
     <header class="header-2">
-        <div class="page-header min-vh-75 relative" style="background-image: url('{{ asset('guest/assets/img/curved-images/curved.jpg') }}');">
+        <div class="page-header min-vh-75 relative" style="background: rgb(2,1,28); background: linear-gradient(321deg, rgba(2,1,28,1) 0%, rgba(121,9,62,1) 60%, rgba(113,0,133,1) 100%);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 text-center mx-auto">

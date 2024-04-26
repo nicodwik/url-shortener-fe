@@ -49,9 +49,22 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
+        function copyToClipboard(shortUrl, el) {
+            navigator.clipboard.writeText(shortUrl)
+                .then(() => {
+                    el.innerHTML = '<small>copied!</small>'
+                    setTimeout(() => {
+                        el.innerHTML = '<i class="fa fa-copy"></i>'
+                    }, 3000);
+                })
+                .catch(() => {
+                    alert("something went wrong");
+                });
+        }
+
     </script>
     <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    {{-- <script async defer src="https://buttons.github.io/buttons.js"></script> --}}
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/soft-ui-dashboard.js') }}"></script>
     @session('toast-success')
@@ -61,8 +74,6 @@
             myToast.show();
         </script>
     @endsession
-
-    @stack('footer-scripts')
 
     @livewireScripts
 </body>
