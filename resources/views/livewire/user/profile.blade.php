@@ -89,7 +89,7 @@
                         </div> --}}
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'Save Changes' }}</button>
+                        <button disabled type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'Save Changes (coming soon)' }}</button>
                     </div>
                 </form>
             </div>

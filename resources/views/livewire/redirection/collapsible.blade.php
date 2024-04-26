@@ -18,8 +18,12 @@
                     <div class="collapse" id="collapseExample-{{ $index }}">
                         <ul class="list-group mt-3">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <p class="mb-0 text-sm w-25">long URL :</p>
-                                <b class="text-xs">{{ $item->long_url }}</b>
+                                <div class="col-2">
+                                    <p class="mb-0 text-sm">Long URL :</p>
+                                </div>
+                                <div class="col-10">
+                                    <b class="text-xs">{{ $item->long_url }}</b>
+                                </div>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <p class="mb-0 text-sm">Status :</p>
