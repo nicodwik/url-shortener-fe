@@ -891,7 +891,7 @@
                     <div class="card shadow-lg">
                       <div class="card-header p-0 mx-3 mt-3 position-relative z-index-1">
                         <div class="d-block blur-shadow-image">
-                          <img src="{{ asset('guest/assets/img/meeting.jpg') }}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
+                          <img src="{{ asset('guest/assets/img/meeting-2.jpg') }}" alt="img-blur-shadow" class="img-fluid shadow rounded-3">
                         </div>
                         {{-- <div class="colored-shadow" style="background-image: url(&quot;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/funny.jpg&quot;);"></div> --}}
                       </div>
