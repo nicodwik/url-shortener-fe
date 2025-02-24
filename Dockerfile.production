@@ -41,11 +41,12 @@ COPY --chown=www-data:www-data . /var/www/html
 
 RUN composer install --optimize-autoloader --no-dev \
     && chown www-data:www-data . -R \
+    && chown -R www-data:www-data /var/lib/nginx \
     && env > /etc/environment
 
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
     PHP_FPM_MEMORY_LIMIT=512M 
-    
+
 CMD ["/bin/sh", "-c", "php-fpm -D && chmod 755 /var/www/html/* && nginx -g 'daemon off;'"]
 
 # HEALTHCHECK --timeout=5s CMD curl --silent --fail http://127.0.0.1/ping
