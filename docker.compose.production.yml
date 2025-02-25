@@ -9,11 +9,11 @@ services:
         ports:
             - '${APP_PORT:-8002}:80'
             # - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        # depends_on:
-        #     - be-service
+            # depends_on:
+            #     - be-service
+        restart: always
         networks:
             - url-shortener-network
-       
         # environment:
         #     WWWUSER: '${WWWUSER}'
         #     LARAVEL_SAIL: 1
